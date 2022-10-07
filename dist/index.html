@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>OMOCAR</title>
+</head>
+<body>
+  <section class="container-fluid" id="nav">
+    <nav class="navbar bg-dark sticky-top flex-md-nowrap p-0 shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: white;">
+          <img src="https://cdn.discordapp.com/attachments/1007286935926095954/1011903660055343204/OMOCAT_Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          OMOCAR RENTAL
+        </a>
+        <a href="" id="logoutButton" style="color: white;">Log Out</a>
+      </div>
+    </nav>
+  </section>
+
+  <!-- login-logout section -->
+  <section class="container" id="login-section">
+    <div class="row">
+      <div class="col-12 col-lg-8 offset-lg-2 my-5">
+        <div class="row">
+          <div class="col-12 col-md-6 border-end p-5 text-left">
+            <div class="form-signin m-auto" id="register-box">
+              <form id="register-form">
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label for="register-username">Username</label>
+                    <label class="text-danger text-end fw-bold">*</label>
+                  </div>
+                  <input type="text" class="form-control" id="register-username" placeholder="Enter your username ..." autocomplete="off" name="username" required />
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label for="register-email">Email</label>
+                    <label class="text-danger text-end fw-bold">*</label>
+                  </div>
+                  <input type="email" class="form-control" id="register-email" placeholder="Enter email address ..." autocomplete="off" name="email" required />
+                </div>
+                <div class="mb-3">
+                  <div class="d-flex justify-content-between">
+                    <label for="register-password">Password</label>
+                    <label class="text-danger text-end fw-bold">*</label>
+                  </div>
+                  <input type="password" class="form-control" id="register-password" placeholder="Enter your password ..." autocomplete="off" name="password" required />
+                </div>
+                <div class="mb-3">
+                  <label for="register-phone">Phone Number</label>
+                  <input type="number" class="form-control" id="register-phone" placeholder="Enter phone number (optional) ..." autocomplete="off" name="phoneNumber"/>
+                </div>
+                <div class="mb-3">
+                  <label for="register-address">Address</label>
+                  <textarea id="register-address" class="form-control" rows="3" placeholder="Enter your address (optional) ..." autocomplete="off" name="address"></textarea>
+                </div>
+                <button class="btn btn-lg btn-primary rounded-pill w-100 p-2 mt-3" type="submit" id="signupButton">Sign Up</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 p-5 text-left" id="login-box">
+            <div class="form-signin m-auto">
+              <form id="login-form">
+                <div class="mb-3 mt-3">
+                  <div class="d-flex justify-content-between">
+                    <label for="login-email">Email</label>
+                    <label class="text-danger text-end fw-bold">*</label>
+                  </div>
+                  <input type="email" class="form-control" id="login-email" placeholder="Enter email address ..." autocomplete="off" required />
+                </div>
+                <div class="mb-4">
+                  <div class="d-flex justify-content-between">
+                    <label for="login-password">Password</label>
+                    <label class="text-danger text-end fw-bold">*</label>
+                  </div>
+                  <input type="password" class="form-control" id="login-password" placeholder="Enter your password ..." autocomplete="off" required />
+                </div>
+                <button class="btn btn-lg btn-primary rounded-pill w-100 p-2" type="submit" id="loginButton">Log In</button>
+
+                <!-- Google Login Button -->
+                <div id="g_id_onload"></div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end login-logout section -->
+
+  <!-- Home Section -->
+  <section class="container-fluid" id="home-section">
+    <div class="row">
+      <!-- side navbar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" id="sidebar-menu">
+        <div class="position-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active fw-bold" href="" id="nav-dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" id="nav-transportations">Transportations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" id="nav-type">Types</a>
+            </li>
+          </ul>
+          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+            <span>Account</span>
+          </h6>
+          <ul class="nav flex-column mb-2">
+            <li class="nav-item">
+              <a class="nav-link">Hello, <span id="username"></span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- End side navbar -->
+
+      <!-- Transportation Section -->
+      <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="transportations-section">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="display-2">Transportations</h1>
+          <button class="btn btn-primary rounded-pill" id="new-transportations"><span class="icon material-symbols-outlined">add</span>New Transportations</button>
+        </div>
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col" width="180px">Image</th>
+                  <th scope="col" width="250px">Description</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Author</th>
+                  <th scope="col" width="50px"></th>
+                </tr>
+              </thead>
+              <tbody id="table-transportations">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <!-- End Transportation Section -->
+
+      <!-- New Transportation Section -->
+      <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="new-transportations-section">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="display-2">New Transportation</h1>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <form id="transportations-form">
+              <div class="mb-3">
+                <label for="transportations-name">Name <span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control" id="transportations-name" placeholder="Enter transportations name" autocomplete="off" name="name" required />
+              </div>
+              <div class="mb-3">
+                <label for="transportations-type">Type <span class="text-danger fw-bold">*</span></label>
+                <select id="transportations-type" class="form-select" name="typeId" required>
+                  <option value="" selected disabled>-- Select Category --</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="transportations-desc">Description <span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control" id="transportations-desc" placeholder="Enter transportations description" autocomplete="off" name="description" required />
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="mb-3">
+                    <label for="transportations-location">Location <span class="text-danger fw-bold">*</span></label>
+                    <input type="text" min="0" class="form-control" id="transportations-location" placeholder="Enter transportations location" autocomplete="off" name="location" required />
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="mb-3">
+                    <label for="transportations-price">Price <span class="text-danger fw-bold">*</span></label>
+                    <input type="number" min="0" class="form-control" id="transportations-price" placeholder="Enter transportations price" autocomplete="off" name="price" required />
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="transportations-image">Image <span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control" id="transportations-image" placeholder="Enter transportations image url" autocomplete="off" name="imgUrl" required />
+              </div>
+              <div class="row mt-5 mb-3">
+                <div class="col-6">
+                  <a class="btn btn-lg btn-light rounded-pill w-100 p-2" href="" id="cancel-transportations">Cancel</a>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-lg btn-primary rounded-pill w-100 p-2" type="submit" href="" id="submit-transportations">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- End New Transportation Section -->
+
+      <!-- Type Section -->
+      <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="type-section">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="display-2">Types</h1>
+          <button class="btn btn-primary rounded-pill" id="new-type"><span class="icon material-symbols-outlined">add</span>new Types</button>
+        </div>
+        <div class="row">
+          <div class="col-12 table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col" width="50px"></th>
+                </tr>
+              </thead>
+              <tbody id="table-type">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <!-- End Type Section -->
+
+      <!-- New Type Section -->
+      <section class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="new-type-section">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 class="display-2">New Type</h1>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <form id="type-form">
+              <div class="mb-3">
+                <label for="type-name">Name <span class="text-danger fw-bold">*</span></label>
+                <input type="text" class="form-control" id="type-name" placeholder="Enter Type name" autocomplete="off" required />
+              </div>
+              <div class="row mt-5 mb-3">
+                <div class="col-6">
+                  <a class="btn btn-lg btn-light rounded-pill w-100 p-2" href="" id="cancel-type">Cancel</a>
+                </div>
+                <div class="col-6">
+                  <button class="btn btn-lg btn-primary rounded-pill w-100 p-2" type="submit" href="" id="submit-type">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <!-- End New Type Section -->
+
+    </div>
+  </section>
+  <!-- End Home Section -->
+
+  <!-- OAuth Google -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- SweetAlert2 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script>
+    const url = 'https://omocarh8.herokuapp.com/'
+
+    //OAuth Google
+    function handleCredentialResponse(response) {
+        $.ajax({
+          method: 'POST',
+          url:`${url}login/google`,
+          headers: { 'access_token': response.credential }
+        })
+        .done(response => {
+          localStorage.setItem("access_token", response.access_token)
+
+          transportations()
+          user()
+          $('section#login-section').hide()
+          $('section#home-section').show()
+          $('a#logoutButton').show()
+          $('section#new-transportations-section').hide()
+          $('section#new-type-section').hide()
+          $('section#type-section').hide()
+        })
+        .fail()
+      }
+
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "518603547293-c74jbt5cvuglqbd3aduh45pn3ej8fr8h.apps.googleusercontent.com",
+        callback: handleCredentialResponse
+      });
+
+      google.accounts.id.renderButton(
+        document.getElementById("g_id_onload"),
+        { theme: "outline", size: "large" }  // customization attributes
+      );
+
+      google.accounts.id.prompt(); // also display the One Tap dialog
+    }
+
+    let deleteTransportations = (id) => {
+      $.ajax({
+        method: 'DELETE',
+        url: `${url}transportations/${id}`,
+        headers: { access_token: localStorage.getItem('access_token') }
+      })
+      .done(response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your data has been deleted',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        transportations()
+      })
+      .fail(err => {
+        Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+      })
+    }
+
+    let transportations = () => {
+      $('tbody#table-transportations').empty()
+      $.ajax(`${url}transportations`, { headers: { access_token: localStorage.getItem('access_token') } })
+      .done(response => {
+        response.forEach((el, i) => {
+          const idr = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(el.price)
+          const table = `
+          <tr>
+            <td scope="row">#${i+1}</td>
+            <td class="fw-bold">${el.name}</td>
+            <td>
+              <img src="${el.imgUrl}" class="img-fluid" />
+            </td>
+            <td>${el.description}</td>
+            <td>${el.location}</td>
+            <td>${el.Type.name}</td>
+            <td class="fw-bold">${idr}</td>
+            <td>${el.User.email}</td>
+            <td>
+              <button onClick="deleteTransportations(${el.id})" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></button>
+            </td>
+          </tr>`
+
+          $('tbody#table-transportations').append(table)
+        })
+      })
+      .fail(err => {
+        Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+      })
+    }
+    
+    let deleteType = (id) => {
+      $.ajax({
+        method: 'DELETE',
+        url: `${url}types/${id}`,
+        headers: { access_token: localStorage.getItem('access_token') }
+      })
+      .done(response => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your data has been deleted',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        types()
+      })
+      .fail(err => {
+        Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+      })
+    }
+
+    let types = () => {
+      $('tbody#table-type').empty()
+      $('select#transportations-type').empty()
+      $.ajax(`${url}types`, { headers: { access_token: localStorage.getItem('access_token') } })
+      .done(response => {
+        response.forEach((el, i) => {
+          const selection = `<option value="${el.id}">${el.name}</option>`
+          const table = `
+          <tr>
+            <td scope="row">#${i+1}</td>
+            <td class="fw-bold">${el.name}</td>
+            <td>
+              <button onClick="deleteType(${el.id})" class="ms-3"><span class="icon material-symbols-outlined text-danger">delete</span></button>
+            </td>
+          </tr>`
+          $('select#transportations-type').append(selection)
+          $('tbody#table-type').append(table)
+        })
+      })
+      .fail(err => {
+        Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+      })
+    }
+
+    let user = () => {
+      $('span#username').empty()
+      $.ajax(`${url}users`, { headers: { access_token: localStorage.getItem('access_token') } })
+      .done(response => {
+        $('span#username').append(`${response.username}`)
+        localStorage.setItem('id', response.id)
+      })
+      .fail(err => {
+        Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+      })
+    }
+
+    $( document ).ready(() => {
+      if (!localStorage.access_token) {
+        $('section#login-section').show()
+        $('section#home-section').hide()
+        $('a#logoutButton').hide()
+      } else {
+        transportations()
+        user()
+        $('section#login-section').hide()
+        $('section#home-section').show()
+        $('a#logoutButton').show()
+        $('section#new-transportations-section').hide()
+        $('section#type-section').hide()
+        $('section#new-type-section').hide()
+      }
+
+      $('button#signupButton').on('click', (event) => {
+        event.preventDefault()
+        const username = $('input#register-username').val()
+        const email = $('input#register-email').val()
+        const password = $('input#register-password').val()
+        const phoneNumber = $('input#register-phone').val()
+        const address = $('textarea#register-address').val()
+        
+        $.post(`${url}register`, {
+          username,
+          email,
+          password,
+          phoneNumber,
+          address
+        })
+        .done(response => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Your data has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          $('div#register-box').hide()
+          $('div#login-box').show()
+        })
+        .fail(err => {
+          Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+        })
+      })
+
+      $('button#loginButton').on('click', (event) => {
+        event.preventDefault()
+        const email = $('input#login-email').val()
+        const password = $('input#login-password').val()
+        
+        $.post(`${url}login`, {
+          email,
+          password
+        })
+        .done(response => {
+          localStorage.setItem("access_token", response.access_token)
+
+          transportations()
+          user()
+          $('section#login-section').hide()
+          $('section#home-section').show()
+          $('a#logoutButton').show()
+          $('section#new-transportations-section').hide()
+          $('section#new-type-section').hide()
+          $('section#type-section').hide()
+
+        })
+        .fail(err => {
+          Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+        })
+      })
+
+      $('a#logoutButton').on('click', () => {
+        localStorage.clear()
+      })
+
+      $('button#new-transportations').on('click', (event) => {
+        event.preventDefault()
+        types()
+        $('section#new-transportations-section').show()
+        $('section#transportations-section').hide()
+        $('section#new-type-section').hide()
+      })
+
+      $('a#cancel-transportations').on('click', (event) => {
+        event.preventDefault()
+        $('section#new-transportations-section').hide()
+        $('section#transportations-section').show()
+        $('section#new-type-section').hide()
+      })
+
+      $('a#nav-transportations').on('click', (event) => {
+        event.preventDefault()
+        $('section#type-section').hide()
+        $('section#transportations-section').show()
+        $('section#new-transportations-section').hide()
+        $('section#new-type-section').hide()
+      })
+
+      $('a#nav-type').on('click', (event) => {
+        event.preventDefault()
+        types()
+        $('section#type-section').show()
+        $('section#transportations-section').hide()
+        $('section#new-transportations-section').hide()
+        $('section#new-type-section').hide()
+      })
+
+      $('button#new-type').on('click', (event) => {
+        event.preventDefault()
+        $('section#type-section').hide()
+        $('section#transportations-section').hide()
+        $('section#new-transportations-section').hide()
+        $('section#new-type-section').show()
+      })
+
+      $('button#submit-transportations').on('click', (event) => {
+        event.preventDefault()
+        const name = $('input#transportations-name').val()
+        const typeId = $('select#transportations-type').val()
+        const description = $('input#transportations-desc').val()
+        const location = $('input#transportations-location').val()
+        const price = $('input#transportations-price').val()
+        const imgUrl = $('input#transportations-image').val()
+        const authorId = localStorage.getItem('id')
+
+        $.ajax({
+          method: 'POST',
+          url: `${url}transportations`, 
+          data: { name, typeId, description, location, price, imgUrl, authorId },
+          headers: { access_token: localStorage.getItem('access_token') }
+        })
+        .done(response => {
+          Swal.fire({
+            position: 'mid',
+            icon: 'success',
+            title: 'Your data has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          transportations()
+          $('section#new-transportations-section').hide()
+          $('section#transportations-section').show()
+          $('section#new-type-section').hide()
+          
+          $('input#transportations-name').val('').attr('placeholder','Enter Transportation Name')
+          $('input#transportations-desc').val('').attr('placeholder','Enter Transportation Description')
+          $('input#transportations-location').val('').attr('placeholder','Enter Transportation Location')
+          $('input#transportations-price').val('').attr('placeholder','Enter Transportation Price')
+          $('input#transportations-image').val('').attr('placeholder','Enter Transportation Image')
+        })
+        .fail(err => {
+          Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+        })
+      })
+
+      $('button#submit-type').on('click', (event) => {
+        event.preventDefault()
+        const name = $('input#type-name').val()
+
+        $.ajax({
+          method: 'POST',
+          url: `${url}types`, 
+          data: { name },
+          headers: { access_token: localStorage.getItem('access_token') }
+        })
+        .done(response => {
+          Swal.fire({
+            position: 'mid',
+            icon: 'success',
+            title: 'Your data has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          types()
+          $('section#type-section').show()
+          $('section#new-type-section').hide()
+          $('input#type-name').attr('placeholder','Enter Type name').val('')
+        })
+        .fail(err => {
+          Swal.fire({
+          icon: 'error',
+          title: `${err.responseJSON.message}`,
+          text: `Whoops Something Error`
+        })
+        })
+      })
+      
+      $('a#cancel-type').on('click', (event) => {
+        event.preventDefault()
+        $('section#type-section').show()
+        $('section#transportations-section').hide()
+        $('section#new-transportations-section').hide()
+        $('section#new-type-section').hide()
+      })
+    
+    })
+  </script>
+</body>
+</html>
